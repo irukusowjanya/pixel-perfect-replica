@@ -15,7 +15,9 @@ import {
   ChevronDown,
   ArrowUpRight,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+import { toast } from "sonner";
+import { authErrorMessage } from "./auth";
 import { Button } from "@/components/ui/button";
 import { useSession } from "./session";
 import { supabase } from "@/integrations/supabase/client";
@@ -41,11 +43,18 @@ export function Shell({ children }: { children: ReactNode }) {
   const { user } = useSession();
   const navigate = useNavigate();
   const qc = useQueryClient();
+  const [signingOut, setSigningOut] = useState(false);
   async function signOut() {
-    await qc.cancelQueries();
-    qc.clear();
-    await supabase.auth.signOut();
-    await navigate({ to: "/auth", replace: true });
+    if (signingOut) return;
+    setSigningOut(true);
+    try {
+      const { error } = await supabase.auth.signOut({ scope: "local" });
+      if (error) throw error;
+      await qc.cancelQueries();
+      qc.clear();
+      await navigate({ to: "/auth", replace: true });
+    } catch (error) { toast.error(authErrorMessage(error)); }
+    finally { setSigningOut(false); }
   }
   return (
     <div className="app-shell">
@@ -127,6 +136,7 @@ export function Shell({ children }: { children: ReactNode }) {
                   size="icon"
                   title="Sign out"
                   aria-label="Sign out"
+                  disabled={signingOut}
                   onClick={signOut}
                 >
                   <LogOut />

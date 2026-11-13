@@ -30,6 +30,7 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## Application architecture
+- Centralize email normalization, authentication operations, and safe provider-code messages in the health auth module; keep one shared session/recovery listener to avoid racing session state.
 - Use public educational pages and client-only protected account pages; health history must remain account-scoped through row-level policies.
 - Keep health inference in authenticated server functions and send the complete persisted thread history; adapt streaming deltas to AI Elements messages and save completed replies once.
 - Maintain emergency precautions independently from model output so urgent symptoms receive immediate guidance even when inference is unavailable.

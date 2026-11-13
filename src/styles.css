@@ -79,6 +79,9 @@
 
 :root {
   --radius: 0.5rem;
+  --google-background: #ffffff;
+  --google-border: #747775;
+  --google-text: #1f1f1f;
   --background: oklch(0.983 0.004 225);
   --foreground: oklch(0.29 0.032 235);
   --card: oklch(1 0 0);
@@ -118,6 +121,9 @@
 }
 
 .dark {
+  --google-background: #131314;
+  --google-border: #8e918f;
+  --google-text: #e3e3e3;
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -169,6 +175,20 @@
   display: grid;
   grid-template-columns: 236px minmax(0, 1fr);
   min-height: 100vh;
+}
+.google-sign-in {
+  background: var(--google-background);
+  border: 1px solid var(--google-border);
+  color: var(--google-text);
+  padding-inline: 12px;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.google-sign-in:hover {
+  background: var(--google-background);
+  color: var(--google-text);
 }
 .app-sidebar {
   background: var(--card);
