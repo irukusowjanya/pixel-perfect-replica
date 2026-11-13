@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Use public educational pages and client-only protected account pages; health history must remain account-scoped through row-level policies.
+- Keep health inference in authenticated server functions and send the complete persisted thread history; adapt streaming deltas to AI Elements messages and save completed replies once.
+- Maintain emergency precautions independently from model output so urgent symptoms receive immediate guidance even when inference is unavailable.
+- Store starter condition summaries in a browser-safe data module and explicitly distinguish them from an exhaustive clinically reviewed library.

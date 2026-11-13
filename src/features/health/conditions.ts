@@ -1,0 +1,202 @@
+export type Condition = {
+  slug: string;
+  name: string;
+  category: string;
+  overview: string;
+  symptoms: string[];
+  causes: string;
+  care: string;
+  warning: string;
+  source: string;
+};
+export const categories = [
+  "Heart health",
+  "Diabetes & hormones",
+  "Skin & allergies",
+  "Respiratory health",
+  "Brain & nerves",
+  "Digestive health",
+  "Kidney & urinary",
+  "Liver health",
+  "Bones & joints",
+  "Eyes & ears",
+  "Mental wellbeing",
+  "Women’s health",
+  "Men’s health",
+  "Children’s health",
+  "Infections",
+  "Nutrition",
+  "Common illnesses",
+];
+const entries: [string, string, string, string, string, string, string][] = [
+  [
+    "high-blood-pressure",
+    "High blood pressure",
+    "Heart health",
+    "Persistently high pressure in the arteries can increase the risk of stroke and heart disease.",
+    "Often no symptoms",
+    "Age, family history, high salt intake and inactivity can contribute.",
+    "Regular blood pressure checks, less salt, activity and clinician-directed treatment help manage risk.",
+  ],
+  [
+    "type-2-diabetes",
+    "Type 2 diabetes",
+    "Diabetes & hormones",
+    "The body does not use insulin effectively, causing blood glucose to rise.",
+    "Thirst,Frequent urination,Fatigue",
+    "Family history, age and metabolic factors increase risk.",
+    "A balanced diet, regular activity and an individualized treatment plan support glucose control.",
+  ],
+  [
+    "eczema",
+    "Eczema",
+    "Skin & allergies",
+    "Eczema is an inflammatory skin condition that causes itching and dry irritated skin.",
+    "Itching,Dry skin,Inflamed patches",
+    "Skin barrier differences, allergy tendencies and irritants may play a role.",
+    "Use fragrance-free moisturizers and avoid known irritants. A clinician may recommend skin treatments.",
+  ],
+  [
+    "asthma",
+    "Asthma",
+    "Respiratory health",
+    "Inflammation and narrowing of the airways can make breathing difficult.",
+    "Wheezing,Cough,Chest tightness",
+    "Allergies, smoke, viral infections and exercise may trigger symptoms.",
+    "Follow your prescribed asthma action plan and avoid triggers. Inhaler treatment needs professional guidance.",
+  ],
+  [
+    "migraine",
+    "Migraine",
+    "Brain & nerves",
+    "Migraine is a neurological condition causing recurring headache episodes and other symptoms.",
+    "Throbbing headache,Nausea,Light sensitivity",
+    "Genetics and triggers such as sleep disruption or hormonal changes may contribute.",
+    "Rest in a quiet dark room, hydrate and keep regular sleep and meal routines. Discuss recurrent attacks with a clinician.",
+  ],
+  [
+    "acid-reflux",
+    "Acid reflux",
+    "Digestive health",
+    "Stomach acid moving into the food pipe can cause a burning sensation.",
+    "Heartburn,Sour taste,Regurgitation",
+    "Large meals, lying down after eating, pregnancy and some foods can contribute.",
+    "Eat smaller meals and avoid lying down for several hours after food. Identify your own triggers.",
+  ],
+  [
+    "urinary-tract-infection",
+    "Urinary tract infection",
+    "Kidney & urinary",
+    "A bacterial infection may affect the bladder or other parts of the urinary tract.",
+    "Burning urination,Frequent urination,Lower abdominal discomfort",
+    "Bacteria entering the urinary tract cause most infections.",
+    "Seek medical assessment for suspected infection; antibiotics may be prescribed by a clinician. Drink fluids unless restricted.",
+  ],
+  [
+    "fatty-liver",
+    "Fatty liver disease",
+    "Liver health",
+    "Fat accumulating in the liver may lead to inflammation in some people.",
+    "Often no symptoms,Fatigue",
+    "Metabolic factors and excess alcohol are possible causes; the subtype matters.",
+    "Discuss liver tests with your clinician. Regular activity and balanced nutrition can help; avoid alcohol when advised.",
+  ],
+  [
+    "osteoarthritis",
+    "Osteoarthritis",
+    "Bones & joints",
+    "Changes in cartilage and other joint tissues may cause pain and stiffness.",
+    "Joint pain,Stiffness,Reduced mobility",
+    "Age, previous injury and mechanical load may contribute.",
+    "Gentle activity, strengthening and physiotherapy can improve function. Treatments depend on the joint and your health.",
+  ],
+  [
+    "dry-eyes",
+    "Dry eyes",
+    "Eyes & ears",
+    "The tear film does not adequately lubricate the eyes.",
+    "Grittiness,Burning,Blurred vision",
+    "Screen use, dry air, age and some medicines may contribute.",
+    "Take screen breaks, avoid smoky air and discuss suitable eye drops with an eye-care professional.",
+  ],
+  [
+    "anxiety",
+    "Anxiety disorders",
+    "Mental wellbeing",
+    "Persistent worry or fear can affect daily life, sleep and physical wellbeing.",
+    "Excessive worry,Restlessness,Sleep difficulty",
+    "Biology, stressful experiences and other health factors can contribute.",
+    "Talking therapies, regular routines and support can help. Seek professional support when anxiety affects daily life.",
+  ],
+  [
+    "pcos",
+    "Polycystic ovary syndrome",
+    "Women’s health",
+    "PCOS is a hormonal condition that can affect menstrual cycles and metabolic health.",
+    "Irregular periods,Acne,Excess hair growth",
+    "Genetics and insulin resistance may be involved.",
+    "An individualized plan may address cycles, skin symptoms, fertility and metabolic health. Avoid self-prescribing hormones.",
+  ],
+  [
+    "enlarged-prostate",
+    "Enlarged prostate",
+    "Men’s health",
+    "Non-cancerous enlargement of the prostate can affect urine flow.",
+    "Weak urine stream,Frequent urination,Nighttime urination",
+    "Age-related prostate growth is common.",
+    "Arrange assessment for urinary symptoms. Treatment depends on symptoms and test findings.",
+  ],
+  [
+    "childhood-fever",
+    "Fever in children",
+    "Children’s health",
+    "Fever is a raised temperature, usually a response to infection.",
+    "Raised temperature,Irritability,Reduced appetite",
+    "Viral and bacterial infections are common causes.",
+    "Offer fluids and monitor breathing, alertness and urine. A baby under 3 months with a temperature of 38°C or above needs urgent medical assessment.",
+  ],
+  [
+    "influenza",
+    "Influenza",
+    "Infections",
+    "Flu is a contagious viral infection affecting the respiratory system.",
+    "Fever,Body aches,Cough",
+    "Influenza viruses spread through respiratory particles.",
+    "Rest and fluids may help. High-risk people should seek early medical advice; vaccination helps prevent severe illness.",
+  ],
+  [
+    "iron-deficiency",
+    "Iron deficiency anaemia",
+    "Nutrition",
+    "Too little iron may reduce the number of healthy red blood cells.",
+    "Fatigue,Pale skin,Breathlessness",
+    "Blood loss, low intake or poor absorption can cause iron deficiency.",
+    "Blood tests and investigation of the cause are important. Iron-rich foods help; supplements should be clinician-directed.",
+  ],
+  [
+    "common-cold",
+    "Common cold",
+    "Common illnesses",
+    "A cold is a common viral upper respiratory infection that usually improves on its own.",
+    "Runny nose,Sore throat,Cough",
+    "Several respiratory viruses can cause colds.",
+    "Rest, fluids and handwashing help. Antibiotics do not treat viral colds. Seek advice for worsening or persistent symptoms.",
+  ],
+];
+export const conditions: Condition[] = entries.map(
+  ([slug, name, category, overview, symptoms, causes, care]) => ({
+    slug,
+    name,
+    category,
+    overview,
+    symptoms: symptoms.split(","),
+    causes,
+    care,
+    warning:
+      "Seek medical care for severe, persistent or worsening symptoms. Chest pain, severe breathing difficulty, stroke signs or loss of consciousness require emergency services immediately.",
+    source:
+      slug === "anxiety"
+        ? "https://www.nhs.uk/mental-health/conditions/generalised-anxiety-disorder/overview/"
+        : `https://www.nhs.uk/conditions/${slug === "eczema" ? "atopic-eczema" : slug === "urinary-tract-infection" ? "urinary-tract-infections-utis" : slug === "high-blood-pressure" ? "high-blood-pressure-hypertension" : slug === "iron-deficiency" ? "iron-deficiency-anaemia" : slug === "acid-reflux" ? "heartburn-and-acid-reflux" : slug === "pcos" ? "polycystic-ovary-syndrome-pcos" : slug === "influenza" ? "flu" : slug === "fatty-liver" ? "non-alcoholic-fatty-liver-disease" : slug === "enlarged-prostate" ? "prostate-enlargement" : slug === "childhood-fever" ? "fever-in-children" : slug}/`,
+  }),
+);
